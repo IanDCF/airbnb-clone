@@ -3,6 +3,9 @@ import React, { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
+import { useDispatch } from "react-redux";
+import { onOpenReg } from "../../GlobalRedux/auth/register-modal-slice";
+
 type Props = {};
 
 const UserMenu = (props: Props) => {
@@ -11,6 +14,8 @@ const UserMenu = (props: Props) => {
   const toggleOpen = useCallback(() => {
     setIsOpen((value: boolean): boolean => !value);
   }, []);
+
+  const dispatch = useDispatch();
 
   return (
     <div className="relative">
@@ -35,7 +40,13 @@ const UserMenu = (props: Props) => {
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
             <>
-              <MenuItem onClick={() => {}} label="Sign up" />
+              <MenuItem
+                onClick={() => {
+                  toggleOpen();
+                  dispatch(onOpenReg());
+                }}
+                label="Sign up"
+              />
               <MenuItem onClick={() => {}} label="Log in" />
             </>
           </div>

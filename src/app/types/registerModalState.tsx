@@ -1,0 +1,3 @@
+interface RegisterModalState {
+  isOpen: boolean;
+}

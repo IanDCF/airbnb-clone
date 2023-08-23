@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+  name String?
+  email String? @unique
+  emailVerified DateTime?
+  image String?
+  hashedPassword String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  favourites Favourite[]
+  accounts Account[] 
+  listings Listing[]
+  reservations Reservation[]
+}
+
+model Favourite {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listingId String
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type String
+  provider String
+  providerAccountId String
+  refreshToken String? 
+  expiresAt Int?
+  tokenType String?
+  scope String?
+  idToken String?
+  sessionState String?
+
+  @@unique([provider, providerAccountId])
+}
+
+model Listing {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title String
+  decription String
+  imageSrc String
+  createdAt DateTime @default(now())
+  roomCount Int
+  bathroomCount Int
+  guestCount Int
+  price Int
+  reservations Reservation[]
+  favourites Favourite[]
+}
+
+model Reservation {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listingId String
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  startDate DateTime
+  endDate DateTime
+  totalPrice Int
+  createdAt DateTime @default(now())
+}

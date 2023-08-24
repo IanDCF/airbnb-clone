@@ -1,20 +1,18 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import { useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { onCloseReg } from "../../GlobalRedux/auth/register-modal-slice";
+import { onCloseReg } from "../../Redux/auth/register-modal-slice";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
 
-type Props = {};
-
-const RegisterModal = (props: Props) => {
+const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const isOpenState = useSelector((state: any) => state.regModal.isOpen);
@@ -36,7 +34,6 @@ const RegisterModal = (props: Props) => {
     axios
       .post("/api/register", data)
       .then(() => {
-        // registerModal.onCloseReg();
         dispatch(onCloseReg());
       })
       .catch((error) => {
@@ -56,6 +53,7 @@ const RegisterModal = (props: Props) => {
         disabled={isLoading}
         register={register}
         errors={errors}
+        type="text"
         required
       />
       <Input
@@ -65,6 +63,7 @@ const RegisterModal = (props: Props) => {
         register={register}
         errors={errors}
         required
+        type="email"
       />
       <Input
         id="password"
@@ -72,6 +71,7 @@ const RegisterModal = (props: Props) => {
         disabled={isLoading}
         register={register}
         errors={errors}
+        type="password"
         required
       />
     </div>
@@ -109,11 +109,9 @@ const RegisterModal = (props: Props) => {
   return (
     <Modal
       disabled={isLoading}
-      // isOpen={RegisterModal.isOpen}
       isOpen={isOpenState}
       title="Register"
       actionLabel="Continue"
-      // onCloseReg={RegisterModal.onCloseReg}
       onClose={() => dispatch(onCloseReg())}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

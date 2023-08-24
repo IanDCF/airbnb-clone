@@ -1,14 +1,12 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import { useDispatch } from "react-redux";
-import { onOpenReg } from "../../GlobalRedux/auth/register-modal-slice";
+import { onOpenReg } from "../../Redux/auth/register-modal-slice";
 
-type Props = {};
-
-const UserMenu = (props: Props) => {
+const UserMenu = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleOpen = useCallback(() => {

@@ -1,10 +1,10 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
-import Navbar from "./components/navbar/Navbar";
-import ClientOnly from "./components/ClientOnly";
-import RegisterModal from "./components/modals/RegisterModal";
-import { ReduxProvider } from "./GlobalRedux/provider";
+import Navbar from "../components/navbar/Navbar";
+import ClientOnly from "../components/ClientOnly";
+import RegisterModal from "../components/modals/RegisterModal";
+import { ReduxProvider } from "../Redux/provider";
 import ToasterProvider from "../providers/ToasterProvider";
 
 const nunito = Nunito({ subsets: ["latin"] });

@@ -3,4 +3,14 @@ interface UserState {
   id: string;
   name: string;
   email: string;
+  emailVerified: Date | null;
+  image: string | null;
+}
+
+interface UserAuth {
+  id: string;
+  name: string;
+  email: string;
+  emailVerified: Date | null;
+  image: string | null;
 }

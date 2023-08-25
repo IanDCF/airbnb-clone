@@ -8,10 +8,10 @@ import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { onCloseReg } from "../../Redux/auth/register-modal-slice";
 import { onOpenLogin } from "../../Redux/auth/login-modal-slice";
-import Heading from "../Heading";
+import Heading from "../commons/Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
-import Button from "../Button";
+import Button from "../commons/Button";
 
 const RegisterModal = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,6 +36,7 @@ const RegisterModal = () => {
       .post("/api/register", data)
       .then(() => {
         dispatch(onCloseReg());
+        dispatch(onOpenLogin());
       })
       .catch((error) => {
         toast.error("Something went wrong :(");

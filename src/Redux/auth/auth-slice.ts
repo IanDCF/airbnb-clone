@@ -3,9 +3,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: UserState = {
   isAuth: false,
-  _id: "",
-  firstName: "",
-  lastName: "",
+  id: "",
+  name: "",
   email: "",
 };
 
@@ -14,12 +13,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<UserState>) => {
-      const { _id, firstName, lastName, email } = action.payload;
+      const { id, name, email } = action.payload;
       return {
         isAuth: true,
-        _id,
-        firstName,
-        lastName,
+        id,
+        name,
         email,
       };
     },

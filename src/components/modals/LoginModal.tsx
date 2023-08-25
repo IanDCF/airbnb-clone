@@ -3,20 +3,24 @@ import { useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import axios from "axios";
+import { signIn } from "next-auth/react";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { onCloseReg } from "../../Redux/auth/register-modal-slice";
-import { onOpenLogin } from "../../Redux/auth/login-modal-slice";
+import { onOpenReg } from "../../Redux/auth/register-modal-slice";
+import { onCloseLogin } from "../../Redux/auth/login-modal-slice";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
+import { useRouter } from "next/navigation";
 
-const RegisterModal = () => {
+const LoginModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-  const regOpenState = useSelector((state: any) => state.regModal.regModalOpen);
+  const router = useRouter();
+  const loginOpenState = useSelector(
+    (state: any) => state.loginModal.loginModalOpen
+  );
 
   const {
     register,
@@ -24,7 +28,6 @@ const RegisterModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
@@ -32,31 +35,27 @@ const RegisterModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    axios
-      .post("/api/register", data)
-      .then(() => {
-        dispatch(onCloseReg());
-      })
-      .catch((error) => {
-        toast.error("Something went wrong :(");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      setIsLoading(false);
+
+      if (callback?.ok) {
+        toast.success("Logged In");
+        router.refresh();
+        dispatch(onCloseLogin());
+      }
+
+      if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
   };
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
-      <Input
-        id="name"
-        label="Name"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        type="text"
-        required
-      />
+      <Heading title="Welcome back" subtitle="Log in to your account!" />
       <Input
         id="email"
         label="Email"
@@ -95,15 +94,15 @@ const RegisterModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div>Already have an account?</div>
+          <div>Don't have an account?</div>
           <div
             onClick={() => {
-              dispatch(onCloseReg());
-              dispatch(onOpenLogin());
+              dispatch(onCloseLogin());
+              dispatch(onOpenReg());
             }}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Log in
+            Sign up
           </div>
         </div>
       </div>
@@ -113,10 +112,10 @@ const RegisterModal = () => {
   return (
     <Modal
       disabled={isLoading}
-      isOpen={regOpenState}
-      title="Sign up"
+      isOpen={loginOpenState}
+      title="Log in"
       actionLabel="Continue"
-      onClose={() => dispatch(onCloseReg())}
+      onClose={() => dispatch(onCloseLogin())}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
       footer={footerContent}
@@ -124,4 +123,4 @@ const RegisterModal = () => {
   );
 };
 
-export default RegisterModal;
+export default LoginModal;

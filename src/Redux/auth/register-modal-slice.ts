@@ -1,8 +1,8 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: RegisterModalState = {
-  isOpen: false,
+const initialState: RegModalState = {
+  regModalOpen: false,
 };
 
 const regModalSlice = createSlice({
@@ -10,10 +10,10 @@ const regModalSlice = createSlice({
   initialState,
   reducers: {
     onOpenReg: (state) => {
-      state.isOpen = true;
+      state.regModalOpen = true;
     },
     onCloseReg: (state) => {
-      state.isOpen = false;
+      state.regModalOpen = false;
     },
   },
 });

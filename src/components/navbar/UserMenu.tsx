@@ -5,6 +5,7 @@ import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import { useDispatch } from "react-redux";
 import { onOpenReg } from "../../Redux/auth/register-modal-slice";
+import { onOpenLogin } from "../../Redux/auth/login-modal-slice";
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -45,7 +46,13 @@ const UserMenu = () => {
                 }}
                 label="Sign up"
               />
-              <MenuItem onClick={() => {}} label="Log in" />
+              <MenuItem
+                onClick={() => {
+                  toggleOpen();
+                  dispatch(onOpenLogin());
+                }}
+                label="Log in"
+              />
             </>
           </div>
         </div>

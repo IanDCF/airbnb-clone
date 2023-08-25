@@ -1,7 +1,6 @@
 interface UserState {
   isAuth: boolean;
-  _id: string;
-  firstName: string;
-  lastName: string;
+  id: string;
+  name: string;
   email: string;
 }

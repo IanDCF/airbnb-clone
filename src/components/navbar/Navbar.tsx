@@ -6,10 +6,10 @@ import Search from "./Search";
 import UserMenu from "./UserMenu";
 import { clearUser, setUser } from "@/Redux/auth/auth-slice";
 import { useEffect } from "react";
-import { User } from "@prisma/client";
+import { SafeUser } from "@/types/safeUser";
 
 type Props = {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 };
 
 const Navbar: React.FC<Props> = ({ currentUser }) => {
@@ -20,11 +20,11 @@ const Navbar: React.FC<Props> = ({ currentUser }) => {
     } else {
       console.log(currentUser);
       const data = {
-        id: currentUser?.id,
-        name: currentUser?.name || "",
-        email: currentUser?.email || "",
-        emailVerified: currentUser?.emailVerified,
-        image: currentUser?.image,
+        id: currentUser.id,
+        name: currentUser.name || "",
+        email: currentUser.email || "",
+        emailVerified: currentUser.emailVerified || "",
+        image: currentUser.image,
       };
       dispatch(setUser({ ...data }));
     }

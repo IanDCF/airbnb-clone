@@ -17,6 +17,7 @@ const UserMenu = () => {
   }, []);
 
   const userAuthState = useSelector((state: any) => state.auth.isAuth);
+  const userImageState = useSelector((state: any) => state.auth.image);
 
   return (
     <div className="relative">
@@ -33,7 +34,7 @@ const UserMenu = () => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={userImageState} />
           </div>
         </div>
       </div>

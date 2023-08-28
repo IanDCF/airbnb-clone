@@ -8,8 +8,6 @@ import { ReduxProvider } from "../Redux/redux-provider";
 import ToasterProvider from "../providers/toast-provider";
 import LoginModal from "../components/modals/LoginModal";
 import getCurrentUser from "@/actions/getCurrentUser";
-import { useDispatch } from "react-redux";
-import { setUser, clearUser } from "../Redux/auth/auth-slice";
 
 const nunito = Nunito({ subsets: ["latin"] });
 

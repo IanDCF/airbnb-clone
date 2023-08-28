@@ -37,12 +37,13 @@ model Account {
   type String
   provider String
   providerAccountId String
-  refreshToken String? 
-  expiresAt Int?
-  tokenType String?
+  refresh_token String? 
+  access_token String?
+  expires_at Int?
+  token_type String?
   scope String?
-  idToken String?
-  sessionState String?
+  id_token String?
+  session_state String?
 
   @@unique([provider, providerAccountId])
 }

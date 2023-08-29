@@ -7,6 +7,7 @@ import UserMenu from "./UserMenu";
 import { clearUser, setUser } from "@/Redux/auth/auth-slice";
 import { useEffect } from "react";
 import { SafeUser } from "@/types/safeUser";
+import Categories from "./Categories";
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -18,7 +19,6 @@ const Navbar: React.FC<Props> = ({ currentUser }) => {
     if (!currentUser) {
       dispatch(clearUser());
     } else {
-      console.log(currentUser);
       const data = {
         id: currentUser.id,
         name: currentUser.name || "",
@@ -41,6 +41,7 @@ const Navbar: React.FC<Props> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 };

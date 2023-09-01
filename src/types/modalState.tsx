@@ -5,3 +5,7 @@ interface RegModalState {
 interface LoginModalState {
   loginModalOpen: boolean;
 }
+
+interface RentModalState {
+  rentModalOpen: boolean;
+}

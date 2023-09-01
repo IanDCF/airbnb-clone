@@ -6,6 +6,7 @@ import MenuItem from "./MenuItem";
 import { useDispatch, useSelector } from "react-redux";
 import { onOpenReg } from "../../Redux/auth/register-modal-slice";
 import { onOpenLogin } from "../../Redux/auth/login-modal-slice";
+import { onOpenRent } from "../../Redux/auth/rent-modal-slice";
 import { signOut } from "next-auth/react";
 
 const UserMenu = () => {
@@ -19,11 +20,18 @@ const UserMenu = () => {
   const userAuthState = useSelector((state: any) => state.auth.isAuth);
   const userImageState = useSelector((state: any) => state.auth.image);
 
+  const onRent = useCallback(() => {
+    if (!userAuthState) {
+      return dispatch(onOpenLogin());
+    }
+    return dispatch(onOpenRent());
+  }, [userAuthState]);
+
   return (
     <div className="relative">
       <div className="flex flex-row item-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
         >
           Airbnb your home
@@ -65,7 +73,7 @@ const UserMenu = () => {
                 <MenuItem onClick={() => {}} label="Favourites" />
                 <MenuItem onClick={() => {}} label="Reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />
-                <MenuItem onClick={() => {}} label="Airbnb my home" />
+                <MenuItem onClick={onRent} label="Airbnb my home" />
                 <hr />
                 <MenuItem
                   onClick={() => {

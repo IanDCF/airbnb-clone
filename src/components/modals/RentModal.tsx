@@ -9,6 +9,7 @@ import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
+import dynamic from "next/dynamic";
 
 const RentModal = () => {
   enum STEPS {
@@ -71,6 +72,13 @@ const RentModal = () => {
   }, [step]);
 
   const category = watch("category");
+  const location = watch("location");
+
+  // Dynamic import of Map component
+  const Map = useMemo(
+    () => dynamic(() => import("../map/Map"), { ssr: false }),
+    [location]
+  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -117,9 +125,14 @@ const RentModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Where is your place located?"
-          subtitle="Help geusts find you!"
+          subtitle="Help guests find you!"
         />
-        <CountrySelect />
+        {/* BUG: Location does not persist on goBack or goNext */}
+        <CountrySelect
+          value={location}
+          onChange={(value) => setCustomValue("location", value)}
+        />
+        <Map center={location?.latlng} />
       </div>
     );
   }

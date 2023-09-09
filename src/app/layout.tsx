@@ -8,6 +8,7 @@ import { ReduxProvider } from "../Redux/redux-provider";
 import ToasterProvider from "../providers/toast-provider";
 import LoginModal from "../components/modals/LoginModal";
 import getCurrentUser from "@/actions/getCurrentUser";
+import RentModal from "@/components/modals/RentModal";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default async function RootLayout({
             <ToasterProvider />
             <RegisterModal />
             <LoginModal />
+            <RentModal />
             <Navbar currentUser={currentUser} />
           </ClientOnly>
           {children}

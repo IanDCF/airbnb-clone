@@ -1,7 +1,7 @@
 "use client";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
-import { useCallback } from "react";
+import { ReactEventHandler, useCallback } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
 
 declare global {
@@ -28,9 +28,13 @@ const ImageUpload: React.FC<Props> = ({ onChange, value }) => {
       options={{ maxFiles: 1 }}
     >
       {({ open }) => {
+        function handleOnClick(e: any) {
+          e.preventDefault();
+          open();
+        }
         return (
           <div
-            onClick={() => open?.()}
+            onClick={handleOnClick}
             className="relative cursor-pointer hover:opacity-70 transition border-dashed border-2  rounded-md p-20 border-neutral-300 flex flex-col justify-center items-center gap-4 text-neutral-600"
           >
             <TbPhotoPlus size={50} cl />

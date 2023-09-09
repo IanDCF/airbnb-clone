@@ -19,7 +19,6 @@ const CategoryBox: React.FC<Props> = ({ label, icon: Icon, selected }) => {
 
     if (params) {
       currentQuery = queryString.parse(params.toString());
-      console.log(currentQuery);
     }
 
     const updatedQuery: any = {

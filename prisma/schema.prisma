@@ -53,13 +53,15 @@ model Listing {
   userId String
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   title String
-  decription String
+  category String
+  description String
   imageSrc String
   createdAt DateTime @default(now())
   roomCount Int
   bathroomCount Int
   guestCount Int
   price Int
+  locationValue String
   reservations Reservation[]
   favourites Favourite[]
 }

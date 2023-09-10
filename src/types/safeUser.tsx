@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User, Favourite, Listing, Account, Reservation } from "@prisma/client";
 
 export type SafeUser = Omit<
   User,
@@ -7,6 +7,10 @@ export type SafeUser = Omit<
   createdAt: string;
   updatedAt: string;
   emailVerified?: string | null;
+  favourites?: Favourite[];
+  accounts?: Account[];
+  listings?: Listing[];
+  reservation?: Reservation[];
 };
 
 export type SafeUserState = Omit<

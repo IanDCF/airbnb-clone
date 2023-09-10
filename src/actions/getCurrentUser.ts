@@ -8,7 +8,12 @@ export async function getSession() {
 
 // NOT an API call
 // This is a direct communication with the db through a server component
-export default async function getCurrentUser() {
+export default async function getCurrentUser(
+  includeFavourites = true,
+  includeAccounts = true,
+  includeListings = true,
+  includeReservations = true
+) {
   try {
     const session = await getSession();
 
@@ -16,15 +21,25 @@ export default async function getCurrentUser() {
       return null;
     }
 
+    const include = {
+      favourites: includeFavourites,
+      accounts: includeAccounts,
+      listings: includeListings,
+      reservations: includeReservations,
+    };
+
     const currentUser = await prisma.user.findUnique({
       where: {
         email: session.user.email as string,
       },
+      include,
     });
 
     if (!currentUser) {
       return null;
     }
+
+    console.log(currentUser);
 
     return {
       ...currentUser,

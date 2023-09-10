@@ -1,4 +1,4 @@
-import { onCloseLogin } from "@/Redux/auth/login-modal-slice";
+import { onOpenLogin } from "@/Redux/auth/login-modal-slice";
 import { SafeUser } from "@/types/safeUser";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -25,7 +25,7 @@ const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
       e.stopPropagation();
 
       if (!currentUser) {
-        return dispatch(onCloseLogin());
+        return dispatch(onOpenLogin());
       }
 
       try {
@@ -40,6 +40,7 @@ const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
         await request();
         router.refresh();
         toast.success("Success");
+        return true;
       } catch (error) {
         toast.error("Something went wrong");
       }

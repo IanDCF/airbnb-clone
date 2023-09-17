@@ -79,7 +79,13 @@ const UserMenu = () => {
                   }}
                   label="My trips"
                 />
-                <MenuItem onClick={() => {}} label="Favourites" />
+                <MenuItem
+                  onClick={() => {
+                    toggleOpen();
+                    router.push("/favourites");
+                  }}
+                  label="Favourites"
+                />
                 <MenuItem
                   onClick={() => {
                     toggleOpen();

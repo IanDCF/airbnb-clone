@@ -93,8 +93,20 @@ const UserMenu = () => {
                   }}
                   label="Reservations"
                 />
-                <MenuItem onClick={() => {}} label="My properties" />
-                <MenuItem onClick={onRent} label="Airbnb my home" />
+                <MenuItem
+                  onClick={() => {
+                    toggleOpen();
+                    router.push("/properties");
+                  }}
+                  label="My properties"
+                />
+                <MenuItem
+                  onClick={() => {
+                    onRent();
+                    toggleOpen();
+                  }}
+                  label="Airbnb my home"
+                />
                 <hr />
                 <MenuItem
                   onClick={() => {

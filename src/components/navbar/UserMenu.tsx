@@ -8,10 +8,13 @@ import { onOpenReg } from "../../Redux/auth/register-modal-slice";
 import { onOpenLogin } from "../../Redux/auth/login-modal-slice";
 import { onOpenRent } from "../../Redux/auth/rent-modal-slice";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
+
+  const router = useRouter();
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value: boolean): boolean => !value);
@@ -69,7 +72,12 @@ const UserMenu = () => {
             )}
             {userAuthState && (
               <>
-                <MenuItem onClick={() => {}} label="My trips" />
+                <MenuItem
+                  onClick={() => {
+                    router.push("/trips");
+                  }}
+                  label="My trips"
+                />
                 <MenuItem onClick={() => {}} label="Favourites" />
                 <MenuItem onClick={() => {}} label="Reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />

@@ -1,10 +1,11 @@
 "use client";
 
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./auth/auth-slice";
-import regModalReducer from "./auth/register-modal-slice";
-import loginModalReducer from "./auth/login-modal-slice";
-import rentModalReducer from "./auth/rent-modal-slice";
+import authReducer from "./slices/auth-slice";
+import regModalReducer from "./slices/register-modal-slice";
+import loginModalReducer from "./slices/login-modal-slice";
+import rentModalReducer from "./slices/rent-modal-slice";
+import searchModalReducer from "./slices/search-modal-slice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     regModal: regModalReducer,
     loginModal: loginModalReducer,
     rentModal: rentModalReducer,
+    searchModal: searchModalReducer,
   },
 });
 

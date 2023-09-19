@@ -21,6 +21,7 @@ const Home = async function ({ searchParams }: Props) {
       </ClientOnly>
     );
   }
+
   return (
     <ClientOnly>
       <Container>
@@ -51,3 +52,6 @@ const Home = async function ({ searchParams }: Props) {
 };
 
 export default Home;
+function useSate(arg0: never[]): [any, any] {
+  throw new Error("Function not implemented.");
+}

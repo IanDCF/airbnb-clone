@@ -1,4 +1,4 @@
-import { onOpenLogin } from "@/Redux/auth/login-modal-slice";
+import { onOpenLogin } from "@/Redux/slices/login-modal-slice";
 import { SafeUser } from "@/types/safeUser";
 import axios from "axios";
 import { useRouter } from "next/navigation";

@@ -4,7 +4,7 @@ import Container from "../commons/Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
-import { clearUser, setUser } from "@/Redux/auth/auth-slice";
+import { clearUser, setUser } from "@/Redux/slices/auth-slice";
 import { useEffect } from "react";
 import { SafeUser } from "@/types/safeUser";
 import Categories from "./Categories";

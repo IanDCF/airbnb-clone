@@ -10,7 +10,7 @@ import ListingInfo from "./ListingInfo";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
-import { onOpenLogin } from "@/Redux/auth/login-modal-slice";
+import { onOpenLogin } from "@/Redux/slices/login-modal-slice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ListingReservation from "./ListingReservation";

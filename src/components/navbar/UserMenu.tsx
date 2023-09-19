@@ -4,9 +4,9 @@ import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../commons/Avatar";
 import MenuItem from "./MenuItem";
 import { useDispatch, useSelector } from "react-redux";
-import { onOpenReg } from "../../Redux/auth/register-modal-slice";
-import { onOpenLogin } from "../../Redux/auth/login-modal-slice";
-import { onOpenRent } from "../../Redux/auth/rent-modal-slice";
+import { onOpenReg } from "../../Redux/slices/register-modal-slice";
+import { onOpenLogin } from "../../Redux/slices/login-modal-slice";
+import { onOpenRent } from "../../Redux/slices/rent-modal-slice";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 

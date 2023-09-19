@@ -9,3 +9,7 @@ interface LoginModalState {
 interface RentModalState {
   rentModalOpen: boolean;
 }
+
+interface SearchModalState {
+  searchModalOpen: boolean;
+}

@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import Modal from "./Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { onCloseRent } from "../../Redux/auth/rent-modal-slice";
+import { onCloseRent } from "../../Redux/slices/rent-modal-slice";
 import { useRouter } from "next/navigation";
 import Heading from "../commons/Heading";
 import { categories } from "../navbar/Categories";

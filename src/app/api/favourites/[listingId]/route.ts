@@ -1,18 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import getCurrentUser from "@/actions/getCurrentUser";
-import prisma from "../../../../lib/prisma-db";
-import { SafeUser } from "@/types/safeUser";
-import { User } from "@prisma/client";
+import prisma from "@/lib/prisma-db";
 
 interface IParams {
   listingId?: string;
 }
 
-export async function POST(
-  request: NextRequest,
-  { params }: { params: IParams }
-) {
-  const currentUser = await getCurrentUser(true);
+export async function POST(request: Request, { params }: { params: IParams }) {
+  const currentUser = await getCurrentUser();
 
   if (!currentUser) {
     return NextResponse.error();
@@ -24,20 +19,27 @@ export async function POST(
     throw new Error("Invalid ID");
   }
 
-  const favourite = await prisma.favourite.create({
+  let favouriteIds = [...(currentUser.favouriteIds || [])];
+
+  favouriteIds.push(listingId);
+
+  const user = await prisma.user.update({
+    where: {
+      id: currentUser.id,
+    },
     data: {
-      userId: currentUser.id,
-      listingId,
+      favouriteIds,
     },
   });
-  return NextResponse.json({ created: favourite });
+
+  return NextResponse.json(user);
 }
 
 export async function DELETE(
-  request: NextRequest,
+  request: Request,
   { params }: { params: IParams }
 ) {
-  const currentUser = await getCurrentUser(true);
+  const currentUser = await getCurrentUser();
 
   if (!currentUser) {
     return NextResponse.error();
@@ -45,23 +47,22 @@ export async function DELETE(
 
   const { listingId } = params;
 
-  const currentFavourite = await prisma.favourite.findMany({
-    where: {
-      listingId,
-      userId: currentUser.id,
-    },
-  });
-
-  if (!currentFavourite) {
-    throw new Error("Invalid Listing ID");
+  if (!listingId || typeof listingId !== "string") {
+    throw new Error("Invalid ID");
   }
 
-  const favourite = await prisma.favourite.deleteMany({
+  let favouriteIds = [...(currentUser.favouriteIds || [])];
+
+  favouriteIds = favouriteIds.filter((id) => id !== listingId);
+
+  const user = await prisma.user.update({
     where: {
-      listingId,
-      userId: currentUser.id,
+      id: currentUser.id,
+    },
+    data: {
+      favouriteIds,
     },
   });
 
-  return NextResponse.json({ deleted: favourite });
+  return NextResponse.json(user);
 }

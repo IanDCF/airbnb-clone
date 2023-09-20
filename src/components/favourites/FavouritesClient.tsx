@@ -1,6 +1,6 @@
 "use client";
-import { SafeListing } from "@/types/SafeListings";
-import { SafeUser } from "@/types/safeUser";
+import { SafeListing } from "@/types/index";
+import { SafeUser } from "@/types/index";
 import React from "react";
 import Container from "../commons/Container";
 import Heading from "../commons/Heading";

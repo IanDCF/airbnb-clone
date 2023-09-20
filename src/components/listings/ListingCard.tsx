@@ -1,13 +1,13 @@
 "use client";
 import useCountries from "@/hooks/useCountries";
-import { SafeUser } from "@/types/safeUser";
+import { SafeUser } from "@/types/index";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
 import { format } from "date-fns";
 import Image from "next/image";
 import HeartButton from "../commons/HeartButton";
 import Button from "../commons/Button";
-import { SafeListing, SafeReservation } from "@/types/SafeListings";
+import { SafeListing, SafeReservation } from "@/types/index";
 
 type Props = {
   data: SafeListing;

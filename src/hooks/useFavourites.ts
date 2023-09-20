@@ -1,5 +1,5 @@
 import { onOpenLogin } from "@/Redux/slices/login-modal-slice";
-import { SafeUser } from "@/types/safeUser";
+import { SafeUser } from "@/types/index";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -16,8 +16,9 @@ const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
   const dispatch = useDispatch();
 
   const hasFavourited = useMemo(() => {
-    const list = currentUser?.favourites || [];
-    return list.some((favourite) => favourite.listingId === listingId);
+    const list = currentUser?.favouriteIds || [];
+
+    return list.includes(listingId);
   }, [currentUser, listingId]);
 
   const toggleFavourite = useCallback(
@@ -40,9 +41,8 @@ const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
         await request();
         router.refresh();
         toast.success("Success");
-        return true;
       } catch (error) {
-        toast.error("Something went wrong");
+        toast.error("Something went wrong.");
       }
     },
     [currentUser, hasFavourited, listingId, router]

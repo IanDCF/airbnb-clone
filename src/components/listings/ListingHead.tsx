@@ -1,6 +1,6 @@
 "use client";
 import useCountries from "@/hooks/useCountries";
-import { SafeUser } from "@/types/safeUser";
+import { SafeUser } from "@/types/index";
 import React from "react";
 import Heading from "../commons/Heading";
 import Image from "next/image";

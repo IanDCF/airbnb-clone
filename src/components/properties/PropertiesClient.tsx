@@ -1,6 +1,6 @@
 "use client";
-import { SafeListing } from "@/types/SafeListings";
-import { SafeUser } from "@/types/safeUser";
+import { SafeListing } from "@/types/index";
+import { SafeUser } from "@/types/index";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useState } from "react";

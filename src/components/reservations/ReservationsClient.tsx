@@ -1,6 +1,6 @@
 "use client";
-import { SafeReservation } from "@/types/SafeListings";
-import { SafeUser } from "@/types/safeUser";
+import { SafeReservation } from "@/types/index";
+import { SafeUser } from "@/types/index";
 import React, { useCallback, useState } from "react";
 import Container from "../commons/Container";
 import Heading from "../commons/Heading";

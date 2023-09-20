@@ -1,7 +1,6 @@
 "use client";
-import { SafeListing, SafeReservation } from "@/types/SafeListings";
-import { SafeUser } from "@/types/safeUser";
-import { Reservation } from "@prisma/client";
+import { SafeListing, SafeReservation } from "@/types/index";
+import { SafeUser } from "@/types/index";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { categories } from "../navbar/Categories";
 import Container from "../commons/Container";

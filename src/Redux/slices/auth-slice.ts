@@ -1,13 +1,12 @@
 "use client";
-import { SafeUserAuth, SafeUserState } from "@/types/safeUser";
+import { SafeUser, SafeUserAuth, SafeUserCredentials } from "@/types/index";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialState: SafeUserState = {
+const initialState: SafeUserAuth = {
   isAuth: false,
   id: "",
   name: "",
   email: "",
-  emailVerified: "",
   image: null,
 };
 
@@ -15,14 +14,13 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<SafeUserAuth>) => {
-      const { id, name, email, emailVerified, image } = action.payload;
+    setUser: (state, action: PayloadAction<SafeUserCredentials>) => {
+      const { id, name, email, image } = action.payload;
       return {
         isAuth: true,
         id,
         name,
         email,
-        emailVerified,
         image,
       };
     },

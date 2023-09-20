@@ -6,7 +6,7 @@ import Search from "./Search";
 import UserMenu from "./UserMenu";
 import { clearUser, setUser } from "@/Redux/slices/auth-slice";
 import { useEffect } from "react";
-import { SafeUser } from "@/types/safeUser";
+import { SafeUser } from "@/types/index";
 import Categories from "./Categories";
 
 type Props = {
@@ -23,7 +23,6 @@ const Navbar: React.FC<Props> = ({ currentUser }) => {
         id: currentUser.id,
         name: currentUser.name || "",
         email: currentUser.email || "",
-        emailVerified: currentUser.emailVerified || "",
         image: currentUser.image,
       };
       dispatch(setUser({ ...data }));

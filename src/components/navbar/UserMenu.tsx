@@ -28,7 +28,7 @@ const UserMenu = () => {
       return dispatch(onOpenLogin());
     }
     return dispatch(onOpenRent());
-  }, [userAuthState]);
+  }, [userAuthState, dispatch]);
 
   return (
     <div className="relative">

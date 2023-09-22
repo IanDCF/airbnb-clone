@@ -92,14 +92,14 @@ const RentModal = () => {
       return "Create";
     }
     return "Next";
-  }, [step]);
+  }, [step, STEPS.PRICE]);
 
   const secondaryActionLabel = useMemo(() => {
     if (step === STEPS.CATEGORY) {
       return undefined;
     }
     return "Back";
-  }, [step]);
+  }, [step, STEPS.CATEGORY]);
 
   const category = watch("category");
   const location = watch("location");
@@ -111,7 +111,7 @@ const RentModal = () => {
   // Dynamic import of Map component
   const Map = useMemo(
     () => dynamic(() => import("../map/Map"), { ssr: false }),
-    [location]
+    []
   );
 
   const setCustomValue = (id: string, value: any) => {

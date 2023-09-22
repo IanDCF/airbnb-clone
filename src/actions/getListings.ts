@@ -1,5 +1,4 @@
 import prisma from "../lib/prisma-db";
-
 export interface IListingsParams {
   userId?: string;
   guestCount?: number;

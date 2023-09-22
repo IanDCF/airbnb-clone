@@ -47,7 +47,7 @@ const SearchModal = (props: Props) => {
       dynamic(() => import("../map/Map"), {
         ssr: false,
       }),
-    [location]
+    []
   );
 
   const goBack = useCallback(() => {
@@ -107,6 +107,7 @@ const SearchModal = (props: Props) => {
     dateRange,
     goNext,
     params,
+    dispatch,
   ]);
 
   const actionLabel = useMemo(() => {

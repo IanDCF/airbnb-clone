@@ -9,7 +9,7 @@ export interface IListingsParams {
   locationValue?: string;
   category?: string;
 }
-
+// Error: Dynamic server usage: Page couldn't be rendered statically because it used `searchParams.userId`.
 export default async function getListings(params: IListingsParams) {
   try {
     const {

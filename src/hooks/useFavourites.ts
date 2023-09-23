@@ -45,7 +45,7 @@ const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
         toast.error("Something went wrong.");
       }
     },
-    [currentUser, hasFavourited, listingId, router]
+    [currentUser, hasFavourited, listingId, router, dispatch]
   );
 
   return {

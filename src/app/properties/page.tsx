@@ -3,7 +3,7 @@ import getListings from "@/actions/getListings";
 import ClientOnly from "@/components/commons/ClientOnly";
 import EmptyState from "@/components/commons/EmptyState";
 import PropertiesClient from "@/components/properties/PropertiesClient";
-import { SafeListing } from "@/types/SafeListings";
+import { SafeListing } from "@/types/index";
 import React from "react";
 
 type Props = {};

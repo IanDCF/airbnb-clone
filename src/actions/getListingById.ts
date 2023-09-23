@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma-db";
-interface IParams {
+export interface IParams {
   listingId?: string;
 }
 

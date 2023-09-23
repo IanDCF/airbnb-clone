@@ -4,7 +4,7 @@ import ClientOnly from "@/components/commons/ClientOnly";
 import Container from "@/components/commons/Container";
 import EmptyState from "@/components/commons/EmptyState";
 import ListingCard from "@/components/listings/ListingCard";
-import { SafeListing } from "@/types/SafeListings";
+import { SafeListing } from "@/types/index";
 
 type Props = {
   searchParams: IListingsParams;
@@ -52,6 +52,3 @@ const Home = async function ({ searchParams }: Props) {
 };
 
 export default Home;
-function useSate(arg0: never[]): [any, any] {
-  throw new Error("Function not implemented.");
-}

@@ -17,7 +17,7 @@ This project is built using the following technologies and dependencies:
 
 - [Next.js](https://nextjs.org/) - A React framework for building server-rendered applications.
 - [NextAuth.js](https://next-auth.js.org/) - For user authentication, including third-party authentication.
-- [Prisma](https://prisma.io/) - A modern database toolkit for TypeScript and Node.js.
+- [Prisma](https://prisma.io/) - A modern database object relational mapping toolkit for TypeScript and Node.js.
 - [Redux Toolkit](https://redux-toolkit.js.org/) - For state management.
 - [Leaflet](https://leafletjs.com/) - An open-source JavaScript library for interactive maps.
 - [React Date Range](https://github.com/Adphorus/react-date-range) - A date range picker for React.
@@ -51,7 +51,7 @@ To get started with this project, follow these steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/airbnb-clone.git
+   git clone https://github.com/iandcf/airbnb-clone.git
    ```
 
 2. Install project dependencies:

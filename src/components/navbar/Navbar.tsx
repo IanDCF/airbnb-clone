@@ -27,7 +27,7 @@ const Navbar: React.FC<Props> = ({ currentUser }) => {
       };
       dispatch(setUser({ ...data }));
     }
-  }, [currentUser]);
+  }, [currentUser, dispatch]);
 
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">

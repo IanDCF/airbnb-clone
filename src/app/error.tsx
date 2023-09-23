@@ -7,7 +7,7 @@ type Props = {
   error: Error;
 };
 
-const error: React.FC<Props> = ({ error }) => {
+const Error: React.FC<Props> = ({ error }) => {
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -15,4 +15,4 @@ const error: React.FC<Props> = ({ error }) => {
   return <EmptyState title="Uh Oh" subtitle="Something went wrong..." />;
 };
 
-export default error;
+export default Error;

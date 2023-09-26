@@ -3,8 +3,8 @@ import React from "react";
 
 type Props = {};
 
-const loading = (props: Props) => {
+const Loading = (props: Props) => {
   return <Loader />;
 };
 
-export default loading;
+export default Loading;

@@ -2,14 +2,17 @@
 
 Welcome to the Airbnb Clone project! This project aims to replicate some of the core functionalities of Airbnb, allowing users to create listings, favorite listings, make reservations, and more. It also incorporates user authentication and third-party authentication features.
 
+[View Website](https://airbnb-clone-git-testing-iandcf.vercel.app)
+
 ## Table of Contents
 
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Airbnb Clone](#airbnb-clone)
+  - [Table of Contents](#table-of-contents)
+  - [Technologies Used](#technologies-used)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
 
 ## Technologies Used
 

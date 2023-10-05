@@ -43,6 +43,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-// GitLab Access Token
-// glpat-57THpJ5xYu1AbXWnT2tr
